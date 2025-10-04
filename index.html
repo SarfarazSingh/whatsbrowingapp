@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="manifest" href="/whatsbrowingapp/manifest.json">
-    <meta name="theme-color" content="#111827">
-    <link rel="icon" href="/whatsbrowingapp/icons/icon-192.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111827">
+    <meta name="description" content="Find your kind of people, one coffee at a time.">
+    
     <title>Whats' BROwing - Find Your Coffee Connection</title>
+    
+    <!-- PWA -->
+    <link rel="manifest" href="/whatsbrowingapp/manifest.json">
+    <link rel="icon" href="/whatsbrowingapp/icons/icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="BROwing">
+    <link rel="apple-touch-icon" href="/whatsbrowingapp/icons/icon-192.png">
+    
+    <!-- Fonts & Styles -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -19,6 +29,12 @@
                 <div class="coffee-icon">☕</div>
                 <h2 class="hero-tagline">Find your kind of people, one coffee at a time.</h2>
                 <p class="hero-subtitle">Answer a few questions and discover your vibe over coffee.</p>
+                
+                <!-- Install Button -->
+                <button id="installBtn" class="btn btn--secondary" style="display: none; margin-bottom: 1rem;">
+                    📱 Install App
+                </button>
+                
                 <button id="startQuizBtn" class="btn btn--primary btn--lg">Start My Coffee Quiz</button>
             </div>
         </div>
@@ -354,14 +370,58 @@
             <div class="modal-body" id="profileModalBody"></div>
         </div>
     </div>
+
+    <!-- PWA Install Prompt & Service Worker Registration -->
     <script>
+        // PWA Install Prompt
+        let deferredPrompt;
+        const installBtn = document.getElementById('installBtn');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            console.log('beforeinstallprompt event fired');
+            e.preventDefault();
+            deferredPrompt = e;
+            // Show the install button
+            installBtn.style.display = 'inline-block';
+        });
+
+        installBtn.addEventListener('click', async () => {
+            if (!deferredPrompt) {
+                console.log('No deferred prompt available');
+                return;
+            }
+            
+            // Show the install prompt
+            deferredPrompt.prompt();
+            
+            // Wait for the user's response
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log('Install choice:', outcome);
+            
+            // Clear the deferred prompt
+            deferredPrompt = null;
+            installBtn.style.display = 'none';
+        });
+
+        window.addEventListener('appinstalled', () => {
+            console.log('PWA installed successfully');
+            installBtn.style.display = 'none';
+        });
+
+        // Service Worker Registration
         if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/whatsbrowingapp/sw.js')
-      .catch(e => console.log('SW registration failed', e));
-    });
-    }
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/whatsbrowingapp/sw.js')
+                    .then((registration) => {
+                        console.log('ServiceWorker registered:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.log('ServiceWorker registration failed:', error);
+                    });
+            });
+        }
     </script>
+    
     <script src="app.js"></script>
 </body>
 </html>
