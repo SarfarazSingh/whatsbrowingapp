@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whats' BROwing - Find Your Coffee Connection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Landing Page -->
+    <section id="landing" class="page-section">
+        <div class="container">
+            <div class="hero">
+                <h1 class="hero-title">Whats' BROwing</h1>
+                <div class="coffee-icon">☕</div>
+                <h2 class="hero-tagline">Find your kind of people, one coffee at a time.</h2>
+                <p class="hero-subtitle">Answer a few questions and discover your vibe over coffee.</p>
+                <button id="startQuizBtn" class="btn btn--primary btn--lg">Start My Coffee Quiz</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section id="quiz" class="page-section hidden">
+        <div class="container">
+            <div class="quiz-header">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="question-counter">
+                    <span id="currentQuestion">1</span> of 7
+                </div>
+            </div>
+
+            <div class="quiz-card">
+                <!-- Question 1: Email -->
+                <div class="question-slide active" data-question="1">
+                    <h3 class="question-title">What's your email?</h3>
+                    <div class="form-group">
+                        <input type="email" id="email" class="form-control" placeholder="your@email.com" required>
+                    </div>
+                </div>
+
+                <!-- Question 2: Connection Style -->
+                <div class="question-slide" data-question="2">
+                    <h3 class="question-title">How do you usually connect with people?</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="connection" value="I ask questions">
+                            <span class="radio-custom"></span>
+                            I ask questions
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="connection" value="I listen">
+                            <span class="radio-custom"></span>
+                            I listen
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="connection" value="I share stories">
+                            <span class="radio-custom"></span>
+                            I share stories
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="connection" value="I vibe quietly">
+                            <span class="radio-custom"></span>
+                            I vibe quietly
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 3: Hobbies -->
+                <div class="question-slide" data-question="3">
+                    <h3 class="question-title">What are your hobbies?</h3>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="hobbies" value="Sports">
+                            <span class="checkbox-custom"></span>
+                            Sports
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="hobbies" value="Theatre">
+                            <span class="checkbox-custom"></span>
+                            Theatre
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="hobbies" value="Music">
+                            <span class="checkbox-custom"></span>
+                            Music
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="hobbies" value="Geo-politics">
+                            <span class="checkbox-custom"></span>
+                            Geo-politics
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="hobbies" value="Running">
+                            <span class="checkbox-custom"></span>
+                            Running
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="hobbies" value="Netflix & Chill">
+                            <span class="checkbox-custom"></span>
+                            Netflix & Chill
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="hobbies" value="Museums">
+                            <span class="checkbox-custom"></span>
+                            Museums
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="hobbies" value="Baking">
+                            <span class="checkbox-custom"></span>
+                            Baking
+                        </label>
+                    </div>
+                    <div class="form-group mt-16">
+                        <input type="text" id="otherHobbies" class="form-control" placeholder="Other hobbies...">
+                    </div>
+                </div>
+
+                <!-- Question 4: Preferred Setting -->
+                <div class="question-slide" data-question="4">
+                    <h3 class="question-title">I prefer spending more time in…</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="setting" value="At Home">
+                            <span class="radio-custom"></span>
+                            At Home
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="setting" value="The City">
+                            <span class="radio-custom"></span>
+                            The City
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="setting" value="Nature">
+                            <span class="radio-custom"></span>
+                            Nature
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="setting" value="Cafes">
+                            <span class="radio-custom"></span>
+                            Cafes
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="setting" value="Co-working Spaces">
+                            <span class="radio-custom"></span>
+                            Co-working Spaces
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 5: Coffee Budget -->
+                <div class="question-slide" data-question="5">
+                    <h3 class="question-title">How much do you usually spend on a coffee break?</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="budget" value="2–5 €">
+                            <span class="radio-custom"></span>
+                            2–5 €
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="budget" value="5–8 €">
+                            <span class="radio-custom"></span>
+                            5–8 €
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="budget" value="10–15 €">
+                            <span class="radio-custom"></span>
+                            10–15 €
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="budget" value="15+ €">
+                            <span class="radio-custom"></span>
+                            15+ €
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 6: People Preference -->
+                <div class="question-slide" data-question="6">
+                    <h3 class="question-title">What kind of people do you like to meet?</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="people" value="Creatives">
+                            <span class="radio-custom"></span>
+                            Creatives
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="people" value="Entrepreneurs">
+                            <span class="radio-custom"></span>
+                            Entrepreneurs
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="people" value="Artists">
+                            <span class="radio-custom"></span>
+                            Artists
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="people" value="Founders">
+                            <span class="radio-custom"></span>
+                            Founders
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="people" value="Musicians">
+                            <span class="radio-custom"></span>
+                            Musicians
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="people" value="I don't mind—everyone has a story">
+                            <span class="radio-custom"></span>
+                            I don't mind—everyone has a story
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 7: Country -->
+                <div class="question-slide" data-question="7">
+                    <h3 class="question-title">Which country are you from?</h3>
+                    <div class="form-group">
+                        <select id="country" class="form-control" required>
+                            <option value="">Select your country...</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="quiz-navigation">
+                    <button id="prevBtn" class="btn btn--secondary hidden">Previous</button>
+                    <button id="nextBtn" class="btn btn--primary">Next</button>
+                    <button id="submitBtn" class="btn btn--primary hidden">Complete Quiz</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Match Results Section -->
+    <section id="results" class="page-section hidden">
+        <div class="container">
+            <div class="results-header">
+                <div class="success-icon">☕</div>
+                <h2>Your Top 5 Matches</h2>
+                <p>Select people you'd like to meet for coffee!</p>
+            </div>
+
+            <div id="topMatches" class="matches-list"></div>
+
+            <div class="results-actions">
+                <button id="continueToBooking" class="btn btn--primary btn--lg hidden">Continue to Booking</button>
+                <button id="retakeQuizBtn" class="btn btn--secondary">Retake Quiz</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Neighborhood Selection -->
+    <section id="neighborhoods" class="page-section hidden">
+        <div class="container">
+            <div class="neighborhood-header">
+                <h2>Choose Your Madrid Neighborhood</h2>
+                <p>Where would you like to meet for coffee?</p>
+            </div>
+            <div id="neighborhoodGrid" class="neighborhood-grid"></div>
+        </div>
+    </section>
+
+    <!-- Payment Section -->
+    <section id="payment" class="page-section hidden">
+        <div class="container">
+            <div class="payment-container">
+                <div class="payment-summary">
+                    <h2>Payment Summary</h2>
+                    <div class="booking-details" id="bookingDetails"></div>
+                    <div class="payment-total" id="paymentTotal"></div>
+                </div>
+                
+                <div class="payment-form">
+                    <h3>Payment Details</h3>
+                    <form id="paymentForm">
+                        <div class="form-group">
+                            <label class="form-label">Card Number</label>
+                            <input type="text" class="form-control" placeholder="1234 5678 9012 3456" maxlength="19">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Expiry Date</label>
+                                <input type="text" class="form-control" placeholder="MM/YY" maxlength="5">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">CVC</label>
+                                <input type="text" class="form-control" placeholder="123" maxlength="3">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Cardholder Name</label>
+                            <input type="text" class="form-control" placeholder="John Doe">
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full-width">Complete Booking</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat & Profile Section -->
+    <section id="social" class="page-section hidden">
+        <div class="container">
+            <div class="social-header">
+                <h2>Your Coffee Connections</h2>
+                <button id="backToHome" class="btn btn--secondary">Back to Home</button>
+            </div>
+            
+            <div class="social-tabs">
+                <button class="tab-btn active" data-tab="chat">Messages</button>
+                <button class="tab-btn" data-tab="profiles">Profiles</button>
+            </div>
+            
+            <div class="tab-content">
+                <div id="chatTab" class="tab-pane active">
+                    <div class="chat-container">
+                        <div class="chat-list" id="chatList"></div>
+                        <div class="chat-window" id="chatWindow"></div>
+                    </div>
+                </div>
+                
+                <div id="profilesTab" class="tab-pane hidden">
+                    <div class="profiles-grid" id="socialProfiles"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="success-icon">🎉</div>
+                <h3>Congrats your coffee has been booked!</h3>
+                <p>Further details in email</p>
+                <button id="viewConnections" class="btn btn--primary">View Your Connections</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div id="profileModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="profileModalTitle">Profile</h3>
+                <button class="modal-close" id="closeProfileModal">×</button>
+            </div>
+            <div class="modal-body" id="profileModalBody"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
