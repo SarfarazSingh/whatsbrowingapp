@@ -19,6 +19,131 @@
     <!-- Fonts & Styles -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Enhanced animations and styles */
+        .match-card {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                        box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .match-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .coffee-now-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 8px;
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        .roulette-button {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            font-size: 18px;
+            padding: 16px 32px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+            transition: all 0.3s ease;
+            margin-top: 16px;
+        }
+        
+        .roulette-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 28px rgba(245, 158, 11, 0.4);
+        }
+        
+        .feature-banner {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            color: white;
+            padding: 16px;
+            border-radius: 12px;
+            margin: 16px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+        
+        .icebreaker-card {
+            background: #f3f4f6;
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 12px;
+            border-left: 4px solid #6366f1;
+        }
+        
+        .coffee-stamp {
+            display: inline-block;
+            font-size: 24px;
+            margin: 0 4px;
+            opacity: 0.3;
+            transition: opacity 0.3s;
+        }
+        
+        .coffee-stamp.earned {
+            opacity: 1;
+            animation: stampPop 0.5s ease;
+        }
+        
+        @keyframes stampPop {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        .group-session-badge {
+            background: #8b5cf6;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 8px;
+        }
+        
+        .stats-counter {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 24px 0;
+        }
+        
+        .stat-box {
+            background: white;
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 28px;
+            font-weight: 700;
+            color: #6366f1;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+    </style>
 </head>
 <body>
     <!-- Landing Page -->
@@ -30,12 +155,36 @@
                 <h2 class="hero-tagline">Find your kind of people, one coffee at a time.</h2>
                 <p class="hero-subtitle">Answer a few questions and discover your vibe over coffee.</p>
                 
+                <!-- Stats Section -->
+                <div class="stats-counter">
+                    <div class="stat-box">
+                        <div class="stat-number">2.5K+</div>
+                        <div class="stat-label">Active Users</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">8,420</div>
+                        <div class="stat-label">Coffees Shared</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">65%</div>
+                        <div class="stat-label">Meet Rate</div>
+                    </div>
+                </div>
+                
                 <!-- Install Button -->
                 <button id="installBtn" class="btn btn--secondary" style="display: none; margin-bottom: 1rem;">
                     📱 Install App
                 </button>
                 
                 <button id="startQuizBtn" class="btn btn--primary btn--lg">Start My Coffee Quiz</button>
+                
+                <!-- Coffee Roulette -->
+                <button id="coffeeRouletteBtn" class="roulette-button">
+                    🎲 Coffee Roulette - Meet Someone NOW!
+                </button>
+                <p style="text-align: center; margin-top: 8px; font-size: 14px; color: #6b7280;">
+                    Feeling adventurous? Get matched instantly!
+                </p>
             </div>
         </div>
     </section>
@@ -260,6 +409,14 @@
                 <div class="success-icon">☕</div>
                 <h2>Your Top 5 Matches</h2>
                 <p>Select people you'd like to meet for coffee!</p>
+                
+                <!-- Coffee Now Filter -->
+                <div class="feature-banner">
+                    <label style="cursor: pointer;">
+                        <input type="checkbox" id="coffeeNowFilter" style="margin-right: 8px;">
+                        Show only people available RIGHT NOW
+                    </label>
+                </div>
             </div>
 
             <div id="topMatches" class="matches-list"></div>
@@ -325,6 +482,22 @@
         <div class="container">
             <div class="social-header">
                 <h2>Your Coffee Connections</h2>
+                
+                <!-- Coffee Stamps -->
+                <div style="text-align: center; margin: 16px 0;">
+                    <div style="font-size: 14px; color: #6b7280; margin-bottom: 8px;">Your Coffee Stamps</div>
+                    <div id="coffeeStamps">
+                        <span class="coffee-stamp earned">☕</span>
+                        <span class="coffee-stamp earned">☕</span>
+                        <span class="coffee-stamp earned">☕</span>
+                        <span class="coffee-stamp">☕</span>
+                        <span class="coffee-stamp">☕</span>
+                    </div>
+                    <div style="font-size: 12px; color: #9ca3af; margin-top: 4px;">
+                        3/5 coffees - 2 more for a free premium match!
+                    </div>
+                </div>
+                
                 <button id="backToHome" class="btn btn--secondary">Back to Home</button>
             </div>
             
@@ -355,6 +528,13 @@
                 <div class="success-icon">🎉</div>
                 <h3>Congrats your coffee has been booked!</h3>
                 <p>Further details in email</p>
+                
+                <!-- AI Icebreaker -->
+                <div class="icebreaker-card">
+                    <strong>💡 AI-Generated Icebreaker:</strong>
+                    <p id="aiIcebreaker" style="margin-top: 8px; font-style: italic;"></p>
+                </div>
+                
                 <button id="viewConnections" class="btn btn--primary">View Your Connections</button>
             </div>
         </div>
@@ -381,7 +561,6 @@
             console.log('beforeinstallprompt event fired');
             e.preventDefault();
             deferredPrompt = e;
-            // Show the install button
             installBtn.style.display = 'inline-block';
         });
 
@@ -391,14 +570,10 @@
                 return;
             }
             
-            // Show the install prompt
             deferredPrompt.prompt();
-            
-            // Wait for the user's response
             const { outcome } = await deferredPrompt.userChoice;
             console.log('Install choice:', outcome);
             
-            // Clear the deferred prompt
             deferredPrompt = null;
             installBtn.style.display = 'none';
         });

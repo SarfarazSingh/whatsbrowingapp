@@ -1,4 +1,4 @@
-// Mock data from the provided JSON
+// Mock data with enhanced features
 const mockProfiles = [
     {
         "id": 1,
@@ -15,7 +15,9 @@ const mockProfiles = [
         "bio": "Curious artist from Mumbai who loves exploring culture through music and theatre. Always ready with thoughtful questions that spark deep conversations.",
         "availability": "Weekday mornings and weekend afternoons",
         "favorite_coffee": "Cappuccino with oat milk",
-        "conversation_starters": ["What's the last piece of art that moved you?", "Tell me about a song that changed your perspective"]
+        "conversation_starters": ["What's the last piece of art that moved you?", "Tell me about a song that changed your perspective"],
+        "availableNow": true,
+        "coffeeStamps": 4
     },
     {
         "id": 2,
@@ -32,7 +34,9 @@ const mockProfiles = [
         "bio": "Active entrepreneur from Berlin who believes in the power of listening. Enjoys morning runs and evening conversations about business ideas.",
         "availability": "Early mornings and late evenings",
         "favorite_coffee": "Black coffee, no sugar",
-        "conversation_starters": ["What's your morning routine?", "Share a business idea you're excited about"]
+        "conversation_starters": ["What's your morning routine?", "Share a business idea you're excited about"],
+        "availableNow": true,
+        "coffeeStamps": 7
     },
     {
         "id": 3,
@@ -49,7 +53,9 @@ const mockProfiles = [
         "bio": "Madrid-born storyteller who creates magic in the kitchen and finds inspiration in local museums. Loves sharing experiences over artisanal coffee.",
         "availability": "Afternoon coffee breaks and weekend evenings",
         "favorite_coffee": "Cortado with homemade pastries",
-        "conversation_starters": ["What's a story from your childhood that shaped you?", "Tell me about the best meal you've ever made"]
+        "conversation_starters": ["What's a story from your childhood that shaped you?", "Tell me about the best meal you've ever made"],
+        "availableNow": false,
+        "coffeeStamps": 2
     },
     {
         "id": 4,
@@ -66,7 +72,9 @@ const mockProfiles = [
         "bio": "Thoughtful musician from São Paulo who enjoys quiet moments and deep discussions about world affairs. Creates ambient music inspired by urban life.",
         "availability": "Late night creative sessions and early morning coffee",
         "favorite_coffee": "Espresso with a side of inspiration",
-        "conversation_starters": ["What music do you listen to when you need to think?", "How do you see the world changing?"]
+        "conversation_starters": ["What music do you listen to when you need to think?", "How do you see the world changing?"],
+        "availableNow": true,
+        "coffeeStamps": 5
     },
     {
         "id": 5,
@@ -83,7 +91,9 @@ const mockProfiles = [
         "bio": "Dynamic founder from Lagos who balances high-energy workouts with thoughtful conversations. Believes every person has a story worth exploring.",
         "availability": "Morning coffee before runs, afternoon work breaks",
         "favorite_coffee": "Flat white with extra shot",
-        "conversation_starters": ["What drives you to push your limits?", "Tell me about a challenge that made you stronger"]
+        "conversation_starters": ["What drives you to push your limits?", "Tell me about a challenge that made you stronger"],
+        "availableNow": false,
+        "coffeeStamps": 9
     },
     {
         "id": 6,
@@ -100,7 +110,9 @@ const mockProfiles = [
         "bio": "Contemplative artist from Tokyo who finds beauty in silence and sweetness in homemade treats. Believes listening is an art form.",
         "availability": "Quiet afternoon cafes and evening theatre shows",
         "favorite_coffee": "Matcha latte with handmade cookies",
-        "conversation_starters": ["What's something you've learned from staying quiet?", "Share a tradition from your culture"]
+        "conversation_starters": ["What's something you've learned from staying quiet?", "Share a tradition from your culture"],
+        "availableNow": true,
+        "coffeeStamps": 3
     },
     {
         "id": 7,
@@ -117,7 +129,9 @@ const mockProfiles = [
         "bio": "Adventurous storyteller from London who runs towards new experiences and conversations about global affairs. Every person she meets becomes part of her story.",
         "availability": "Morning runs and late night deep talks",
         "favorite_coffee": "Americano with stories on the side",
-        "conversation_starters": ["What's the most interesting place you've been?", "Tell me about someone who changed your perspective"]
+        "conversation_starters": ["What's the most interesting place you've been?", "Tell me about someone who changed your perspective"],
+        "availableNow": false,
+        "coffeeStamps": 6
     },
     {
         "id": 8,
@@ -134,7 +148,9 @@ const mockProfiles = [
         "bio": "Quiet creative from Lyon who expresses himself through baking and finds solace in art galleries. Enjoys intimate conversations over simple pleasures.",
         "availability": "Evening baking sessions and weekend museum visits",
         "favorite_coffee": "Café au lait with fresh pastries",
-        "conversation_starters": ["What's your favorite thing to create?", "Tell me about a piece of art that speaks to you"]
+        "conversation_starters": ["What's your favorite thing to create?", "Tell me about a piece of art that speaks to you"],
+        "availableNow": true,
+        "coffeeStamps": 1
     },
     {
         "id": 9,
@@ -151,7 +167,9 @@ const mockProfiles = [
         "bio": "Curious entrepreneur from Delhi who blends creativity with business acumen. Loves discovering new perspectives through thoughtful questions.",
         "availability": "Morning co-working sessions and afternoon creative breaks",
         "favorite_coffee": "Masala chai latte with networking",
-        "conversation_starters": ["What's a question that changed how you think?", "Tell me about your creative process"]
+        "conversation_starters": ["What's a question that changed how you think?", "Tell me about your creative process"],
+        "availableNow": false,
+        "coffeeStamps": 8
     },
     {
         "id": 10,
@@ -168,7 +186,9 @@ const mockProfiles = [
         "bio": "Thoughtful founder from Oslo who combines physical endurance with mental clarity. Values deep listening and global perspectives.",
         "availability": "Morning runs and evening strategy sessions",
         "favorite_coffee": "Premium single-origin with focused conversation",
-        "conversation_starters": ["How do you stay mentally strong?", "What global trend excites you most?"]
+        "conversation_starters": ["How do you stay mentally strong?", "What global trend excites you most?"],
+        "availableNow": true,
+        "coffeeStamps": 10
     }
 ];
 
@@ -177,49 +197,57 @@ const neighborhoods = [
         "name": "Malasaña",
         "description": "Hip, artistic neighborhood with vintage cafes and creative energy",
         "coffee_spots": ["Café Central", "Lolina Vintage Café", "The Rooftop Coffee"],
-        "vibe": "Alternative & Creative"
+        "vibe": "Alternative & Creative",
+        "activeUsers": 42
     },
     {
         "name": "Chueca",
         "description": "Vibrant, diverse area known for trendy spots and inclusive atmosphere",
         "coffee_spots": ["Federal Café", "Café Belén", "La Bicicleta Café"],
-        "vibe": "Trendy & Inclusive"
+        "vibe": "Trendy & Inclusive",
+        "activeUsers": 38
     },
     {
         "name": "La Latina",
         "description": "Historic charm meets modern cafe culture in Madrid's heart",
         "coffee_spots": ["Café del Art", "La Rollerie", "Delic Coffee"],
-        "vibe": "Historic & Authentic"
+        "vibe": "Historic & Authentic",
+        "activeUsers": 31
     },
     {
         "name": "Lavapiés",
         "description": "Multicultural neighborhood with eclectic coffee houses",
         "coffee_spots": ["Café Barbieri", "La Infinito", "Tipos Infames"],
-        "vibe": "Multicultural & Eclectic"
+        "vibe": "Multicultural & Eclectic",
+        "activeUsers": 27
     },
     {
         "name": "Salamanca",
         "description": "Upscale district with premium cafes and sophisticated ambiance",
         "coffee_spots": ["Café Gijón", "Dear Breakfast", "Saddle Coffee"],
-        "vibe": "Upscale & Sophisticated"
+        "vibe": "Upscale & Sophisticated",
+        "activeUsers": 35
     },
     {
         "name": "Retiro",
         "description": "Peaceful area near the park, perfect for relaxed conversations",
         "coffee_spots": ["Café del Retiro", "Green & Roses", "Misión Café"],
-        "vibe": "Peaceful & Natural"
+        "vibe": "Peaceful & Natural",
+        "activeUsers": 29
     },
     {
         "name": "Chamberí",
         "description": "Local favorite with cozy neighborhood cafes",
         "coffee_spots": ["Café Comercial", "Pum Pum Café", "Satan's Coffee Corner"],
-        "vibe": "Cozy & Local"
+        "vibe": "Cozy & Local",
+        "activeUsers": 33
     },
     {
         "name": "Conde Duque",
         "description": "Cultural hub with artistic cafes near galleries and museums",
         "coffee_spots": ["Café & Tapas", "La Pecera", "Café Central Design"],
-        "vibe": "Cultural & Artistic"
+        "vibe": "Cultural & Artistic",
+        "activeUsers": 24
     }
 ];
 
@@ -253,6 +281,7 @@ const sections = {
 
 const elements = {
     startQuizBtn: document.getElementById('startQuizBtn'),
+    coffeeRouletteBtn: document.getElementById('coffeeRouletteBtn'),
     prevBtn: document.getElementById('prevBtn'),
     nextBtn: document.getElementById('nextBtn'),
     submitBtn: document.getElementById('submitBtn'),
@@ -270,7 +299,8 @@ const elements = {
     profileModal: document.getElementById('profileModal'),
     viewConnections: document.getElementById('viewConnections'),
     closeProfileModal: document.getElementById('closeProfileModal'),
-    backToHome: document.getElementById('backToHome')
+    backToHome: document.getElementById('backToHome'),
+    coffeeNowFilter: document.getElementById('coffeeNowFilter')
 };
 
 // Initialize the application
@@ -304,6 +334,12 @@ function setupEventListeners() {
         startQuiz();
     });
     
+    // Coffee Roulette feature
+    elements.coffeeRouletteBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        triggerCoffeeRoulette();
+    });
+    
     elements.prevBtn.addEventListener('click', previousQuestion);
     elements.nextBtn.addEventListener('click', nextQuestion);
     elements.submitBtn.addEventListener('click', submitQuiz);
@@ -313,13 +349,19 @@ function setupEventListeners() {
     elements.closeProfileModal.addEventListener('click', closeProfileModal);
     elements.backToHome.addEventListener('click', () => showSection('landing'));
 
+    // Coffee Now filter
+    if (elements.coffeeNowFilter) {
+        elements.coffeeNowFilter.addEventListener('change', function() {
+            displayResults();
+        });
+    }
+
     // Form validation listeners
     const emailInput = document.getElementById('email');
     if (emailInput) {
         emailInput.addEventListener('input', validateCurrentQuestion);
     }
     
-    // Add listeners for radio buttons
     document.querySelectorAll('input[type="radio"]').forEach(input => {
         input.addEventListener('change', function() {
             console.log('Radio button changed:', input.name, input.value);
@@ -327,7 +369,6 @@ function setupEventListeners() {
         });
     });
     
-    // Add listeners for checkboxes
     document.querySelectorAll('input[type="checkbox"]').forEach(input => {
         input.addEventListener('change', function() {
             console.log('Checkbox changed:', input.name, input.value, input.checked);
@@ -365,6 +406,39 @@ function setupEventListeners() {
     console.log('Event listeners set up successfully!');
 }
 
+// Coffee Roulette Feature
+function triggerCoffeeRoulette() {
+    console.log('Coffee Roulette activated!');
+    
+    // Show loading animation
+    elements.coffeeRouletteBtn.textContent = '🎲 Finding your match...';
+    elements.coffeeRouletteBtn.disabled = true;
+    
+    setTimeout(() => {
+        // Get only available now profiles
+        const availableProfiles = mockProfiles.filter(p => p.availableNow);
+        const randomMatch = availableProfiles[Math.floor(Math.random() * availableProfiles.length)];
+        
+        // Create instant match result
+        userResponses = {
+            email: 'roulette@user.com',
+            matches: [randomMatch],
+            isRoulette: true
+        };
+        
+        selectedMatches = [randomMatch.id];
+        
+        // Show result with animation
+        alert(`🎉 You've been matched with ${randomMatch.name}!\n\n${randomMatch.bio}\n\nThey're available RIGHT NOW for coffee in ${randomMatch.madrid_locations[0]}!`);
+        
+        elements.coffeeRouletteBtn.textContent = '🎲 Coffee Roulette - Meet Someone NOW!';
+        elements.coffeeRouletteBtn.disabled = false;
+        
+        // Go directly to neighborhood selection
+        showNeighborhoods();
+    }, 2000);
+}
+
 function populateCountrySelect() {
     const select = elements.countrySelect;
     if (!select) return;
@@ -399,14 +473,11 @@ function startQuiz() {
 }
 
 function updateQuizUI() {
-    // Update progress bar
     const progress = (currentQuestion / 7) * 100;
     elements.progressFill.style.width = `${progress}%`;
     
-    // Update question counter
     elements.currentQuestionSpan.textContent = currentQuestion;
     
-    // Show/hide questions
     document.querySelectorAll('.question-slide').forEach(slide => {
         slide.classList.remove('active');
     });
@@ -415,7 +486,6 @@ function updateQuizUI() {
         currentSlide.classList.add('active');
     }
     
-    // Update navigation buttons
     elements.prevBtn.classList.toggle('hidden', currentQuestion === 1);
     elements.nextBtn.classList.toggle('hidden', currentQuestion === 7);
     elements.submitBtn.classList.toggle('hidden', currentQuestion !== 7);
@@ -522,10 +592,8 @@ function submitQuiz() {
     console.log('Submitting quiz...');
     saveCurrentResponse();
     
-    // Add timestamp
     userResponses.timestamp = new Date().toISOString();
     
-    // Calculate matches and show results
     calculateMatches();
     displayResults();
     showSection('results');
@@ -538,7 +606,6 @@ function calculateMatches() {
         return { ...profile, score };
     });
     
-    // Sort by score descending
     matches.sort((a, b) => b.score - a.score);
     userResponses.matches = matches;
     console.log('Top matches:', matches.slice(0, 5));
@@ -547,7 +614,6 @@ function calculateMatches() {
 function calculateMatchScore(user, profile) {
     let score = 0;
     
-    // Hobbies overlap → +30 points
     if (user.hobbies && profile.hobbies) {
         const commonHobbies = user.hobbies.filter(hobby => 
             profile.hobbies.includes(hobby)
@@ -558,29 +624,24 @@ function calculateMatchScore(user, profile) {
         }
     }
     
-    // People preference match → +20 points
     if (user.people_type === profile.people_type || 
         user.people_type === "I don't mind—everyone has a story" ||
         profile.people_type === "I don't mind—everyone has a story") {
         score += 20;
     }
     
-    // Preferred setting match → +15 points
     if (user.spend_time === profile.spend_time) {
         score += 15;
     }
     
-    // Coffee budget compatibility → +15 points
     if (user.coffee_spend === profile.coffee_spend) {
         score += 15;
     }
     
-    // Country proximity → +10 points (same country)
     if (user.country === profile.country) {
         score += 10;
     }
     
-    // Connection style bonus → +10 points
     if (user.connect_with === profile.connect_with) {
         score += 10;
     }
@@ -595,9 +656,14 @@ function displayResults() {
     
     container.innerHTML = '';
     
-    const topMatches = userResponses.matches.slice(0, 5);
+    let matchesToShow = userResponses.matches.slice(0, 5);
     
-    topMatches.forEach((match, index) => {
+    // Filter by Coffee Now if checked
+    if (elements.coffeeNowFilter && elements.coffeeNowFilter.checked) {
+        matchesToShow = matchesToShow.filter(m => m.availableNow);
+    }
+    
+    matchesToShow.forEach((match, index) => {
         const matchCard = createMatchCard(match, index + 1);
         container.appendChild(matchCard);
     });
@@ -620,10 +686,18 @@ function createMatchCard(match, rank) {
         <div class="match-header">
             <div class="match-info">
                 <div class="match-name-flag">
-                    <div class="match-name">${match.name}</div>
+                    <div class="match-name">
+                        ${match.name}
+                        ${match.availableNow ? '<span class="coffee-now-badge">☕ Available Now</span>' : ''}
+                    </div>
                     <div class="country-flag">${countryFlag}</div>
                 </div>
                 <div class="match-persona">${match.bio}</div>
+                <div style="margin-top: 8px;">
+                    <span style="font-size: 12px; color: #6b7280;">Coffee Stamps: </span>
+                    ${'☕'.repeat(Math.min(match.coffeeStamps, 5))}
+                    ${match.coffeeStamps > 5 ? ` +${match.coffeeStamps - 5}` : ''}
+                </div>
             </div>
             <div class="match-score">
                 <div class="score-percentage">${match.score}%</div>
@@ -643,7 +717,6 @@ function createMatchCard(match, rank) {
         </div>
     `;
     
-    // Add event listener for checkbox
     const checkbox = card.querySelector('input[type="checkbox"]');
     checkbox.addEventListener('change', function() {
         toggleMatchSelection(match.id, this.checked);
@@ -663,8 +736,6 @@ function toggleMatchSelection(matchId, selected) {
     }
     
     console.log('Selected matches:', selectedMatches);
-    
-    // Show/hide continue button
     elements.continueToBooking.classList.toggle('hidden', selectedMatches.length === 0);
 }
 
@@ -676,7 +747,6 @@ function getCountryFlag(countryName) {
 function getSharedTags(user, profile) {
     const tags = [];
     
-    // Add hobbies
     if (profile.hobbies) {
         profile.hobbies.slice(0, 3).forEach(hobby => {
             const shared = user.hobbies && user.hobbies.includes(hobby);
@@ -684,11 +754,25 @@ function getSharedTags(user, profile) {
         });
     }
     
-    // Add preferences
     tags.push({ text: profile.spend_time, shared: user.spend_time === profile.spend_time });
     tags.push({ text: profile.coffee_spend, shared: user.coffee_spend === profile.coffee_spend });
     
     return tags;
+}
+
+// Generate AI Icebreaker
+function generateAIIcebreaker(userProfile, matchProfile) {
+    const commonHobbies = userProfile.hobbies ? userProfile.hobbies.filter(h => matchProfile.hobbies.includes(h)) : [];
+    
+    if (commonHobbies.length > 0) {
+        return `Since you both love ${commonHobbies[0]}, here's a starter: What's the most unexpected thing you learned from ${commonHobbies[0]}?`;
+    }
+    
+    if (userProfile.spend_time === matchProfile.spend_time) {
+        return `You both enjoy ${userProfile.spend_time} - what's your hidden gem spot there?`;
+    }
+    
+    return `Perfect opener: Ask them about their journey as a ${matchProfile.people_type.toLowerCase()}!`;
 }
 
 function viewProfile(profileId) {
@@ -704,6 +788,7 @@ function viewProfile(profileId) {
     modalBody.innerHTML = `
         <div class="profile-header">
             <div class="profile-name">${profile.name} ${getCountryFlag(profile.country)}</div>
+            ${profile.availableNow ? '<div class="coffee-now-badge">Available Now</div>' : ''}
         </div>
         <div class="profile-bio">${profile.bio}</div>
         <div class="profile-detail">
@@ -717,6 +802,9 @@ function viewProfile(profileId) {
         </div>
         <div class="profile-detail">
             <strong>Availability:</strong> ${profile.availability}
+        </div>
+        <div class="profile-detail">
+            <strong>Coffee Stamps Earned:</strong> ${profile.coffeeStamps} ☕
         </div>
         <div class="profile-detail">
             <strong>Conversation Starters:</strong>
@@ -767,6 +855,9 @@ function createNeighborhoodCard(neighborhood) {
         <div class="neighborhood-name">${neighborhood.name}</div>
         <div class="neighborhood-vibe">${neighborhood.vibe}</div>
         <div class="neighborhood-description">${neighborhood.description}</div>
+        <div style="text-align: center; margin: 12px 0; font-weight: 600; color: #6366f1;">
+            ${neighborhood.activeUsers} active users here now
+        </div>
         <div class="coffee-spots">
             <h4>Popular Coffee Spots</h4>
             <div class="spots-list">
@@ -785,7 +876,6 @@ function selectNeighborhood(neighborhoodName) {
     console.log('Selected neighborhood:', neighborhoodName);
     selectedNeighborhood = neighborhoodName;
     
-    // Update UI to show selection
     document.querySelectorAll('.neighborhood-card').forEach(card => {
         card.classList.remove('selected');
     });
@@ -795,7 +885,6 @@ function selectNeighborhood(neighborhoodName) {
         selectedCard.classList.add('selected');
     }
     
-    // Show payment section after a brief delay
     setTimeout(() => {
         showPaymentSection();
     }, 500);
@@ -847,11 +936,21 @@ function displayBookingDetails() {
 function processPayment() {
     console.log('Processing payment...');
     
-    // Simulate payment processing
     elements.paymentForm.classList.add('loading');
     
     setTimeout(() => {
         elements.paymentForm.classList.remove('loading');
+        
+        // Generate AI icebreaker for success modal
+        const selectedProfilesData = mockProfiles.filter(profile => 
+            selectedMatches.includes(profile.id)
+        );
+        
+        if (selectedProfilesData.length > 0) {
+            const icebreaker = generateAIIcebreaker(userResponses, selectedProfilesData[0]);
+            document.getElementById('aiIcebreaker').textContent = icebreaker;
+        }
+        
         showSuccessModal();
     }, 2000);
 }
@@ -893,6 +992,7 @@ function setupChatList() {
                 <div class="chat-name">${profile.name}</div>
                 <div class="chat-preview">Hey! Looking forward to our coffee meetup!</div>
             </div>
+            ${profile.availableNow ? '<span class="coffee-now-badge" style="margin-left: auto;">Now</span>' : ''}
         </div>
     `).join('');
 }
@@ -912,6 +1012,9 @@ function setupProfiles() {
                 <div class="country-flag">${getCountryFlag(profile.country)}</div>
             </div>
             <div class="profile-bio">${profile.bio}</div>
+            <div style="margin: 8px 0; font-size: 12px; color: #6b7280;">
+                Coffee Stamps: ${'☕'.repeat(Math.min(profile.coffeeStamps, 5))}
+            </div>
             <div class="profile-tags">
                 ${profile.hobbies.slice(0, 3).map(hobby => `<span class="tag">${hobby}</span>`).join('')}
             </div>
@@ -924,7 +1027,6 @@ function setupProfiles() {
 }
 
 function switchTab(tabName) {
-    // Update tab buttons
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.classList.remove('active');
         if (btn.dataset.tab === tabName) {
@@ -932,7 +1034,6 @@ function switchTab(tabName) {
         }
     });
     
-    // Update tab content
     document.querySelectorAll('.tab-pane').forEach(pane => {
         pane.classList.remove('active');
         pane.classList.add('hidden');
@@ -951,12 +1052,10 @@ function openChat(profileId) {
     
     console.log('Opening chat with:', profile.name);
     
-    // Update active chat item
     document.querySelectorAll('.chat-item').forEach(item => {
         item.classList.remove('active');
     });
     
-    // Find and activate the chat item
     const chatItems = document.querySelectorAll('.chat-item');
     chatItems.forEach(item => {
         if (item.textContent.includes(profile.name)) {
@@ -964,14 +1063,15 @@ function openChat(profileId) {
         }
     });
     
-    // Display chat window
     const chatWindow = document.getElementById('chatWindow');
     if (chatWindow) {
+        const icebreaker = generateAIIcebreaker(userResponses, profile);
+        
         chatWindow.innerHTML = `
             <div class="chat-header">${profile.name} ${getCountryFlag(profile.country)}</div>
             <div class="chat-messages">
                 <div class="message received">
-                    <div class="message-bubble">Hey! I'm excited about our coffee meetup in ${selectedNeighborhood}! 🎉</div>
+                    <div class="message-bubble">Hey! I'm excited about our coffee meetup in ${selectedNeighborhood}!</div>
                     <div class="message-time">2:30 PM</div>
                 </div>
                 <div class="message received">
@@ -979,8 +1079,12 @@ function openChat(profileId) {
                     <div class="message-time">2:32 PM</div>
                 </div>
                 <div class="message sent">
-                    <div class="message-bubble">Great question! I'd love to discuss this over coffee ☕</div>
+                    <div class="message-bubble">Great question! I'd love to discuss this over coffee</div>
                     <div class="message-time">2:35 PM</div>
+                </div>
+                <div style="background: #f3f4f6; padding: 12px; margin: 16px 0; border-radius: 8px; border-left: 3px solid #6366f1;">
+                    <strong style="font-size: 12px; color: #6366f1;">AI SUGGESTED ICEBREAKER:</strong>
+                    <p style="margin: 8px 0 0 0; font-size: 14px;">${icebreaker}</p>
                 </div>
             </div>
             <div class="chat-input">
@@ -992,7 +1096,6 @@ function openChat(profileId) {
         `;
     }
     
-    // Switch to chat tab if not already active
     switchTab('chat');
 }
 
@@ -1000,7 +1103,6 @@ function retakeQuiz() {
     console.log('Retaking quiz...');
     resetQuizState();
     
-    // Reset form inputs
     document.querySelectorAll('input').forEach(input => {
         if (input.type === 'checkbox' || input.type === 'radio') {
             input.checked = false;
@@ -1017,5 +1119,11 @@ function retakeQuiz() {
     updateQuizUI();
     showSection('quiz');
 }
+
+// Make functions globally accessible for onclick handlers
+window.viewProfile = viewProfile;
+window.sendMessage = sendMessage;
+window.selectNeighborhood = selectNeighborhood;
+window.openChat = openChat;
 
 console.log('Whats\' BROwing app script loaded successfully!');
