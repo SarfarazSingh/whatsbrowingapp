@@ -263,49 +263,45 @@ const countries = [
     {"name": "Norway", "flag": "🇳🇴"}
 ];
 
-// Application state
-let currentQuestion = 1;
-let userResponses = {};
-let selectedMatches = [];
-let selectedNeighborhood = null;
-
-// DOM elements
-const sections = {
-    landing: document.getElementById('landing'),
-    quiz: document.getElementById('quiz'),
-    results: document.getElementById('results'),
-    neighborhoods: document.getElementById('neighborhoods'),
-    payment: document.getElementById('payment'),
-    social: document.getElementById('social')
-};
-
-const elements = {
-    startQuizBtn: document.getElementById('startQuizBtn'),
-    coffeeRouletteBtn: document.getElementById('coffeeRouletteBtn'),
-    prevBtn: document.getElementById('prevBtn'),
-    nextBtn: document.getElementById('nextBtn'),
-    submitBtn: document.getElementById('submitBtn'),
-    retakeQuizBtn: document.getElementById('retakeQuizBtn'),
-    continueToBooking: document.getElementById('continueToBooking'),
-    currentQuestionSpan: document.getElementById('currentQuestion'),
-    progressFill: document.getElementById('progressFill'),
-    countrySelect: document.getElementById('country'),
-    topMatches: document.getElementById('topMatches'),
-    neighborhoodGrid: document.getElementById('neighborhoodGrid'),
-    bookingDetails: document.getElementById('bookingDetails'),
-    paymentTotal: document.getElementById('paymentTotal'),
-    paymentForm: document.getElementById('paymentForm'),
-    successModal: document.getElementById('successModal'),
-    profileModal: document.getElementById('profileModal'),
-    viewConnections: document.getElementById('viewConnections'),
-    closeProfileModal: document.getElementById('closeProfileModal'),
-    backToHome: document.getElementById('backToHome'),
-    coffeeNowFilter: document.getElementById('coffeeNowFilter')
-};
+// DOM elements - will be populated after DOM loads
+const sections = {};
+const elements = {};
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Initializing Whats\' BROwing app...');
+    
+    // Initialize sections
+    sections.landing = document.getElementById('landing');
+    sections.quiz = document.getElementById('quiz');
+    sections.results = document.getElementById('results');
+    sections.neighborhoods = document.getElementById('neighborhoods');
+    sections.payment = document.getElementById('payment');
+    sections.social = document.getElementById('social');
+    
+    // Initialize elements
+    elements.startQuizBtn = document.getElementById('startQuizBtn');
+    elements.coffeeRouletteBtn = document.getElementById('coffeeRouletteBtn');
+    elements.prevBtn = document.getElementById('prevBtn');
+    elements.nextBtn = document.getElementById('nextBtn');
+    elements.submitBtn = document.getElementById('submitBtn');
+    elements.retakeQuizBtn = document.getElementById('retakeQuizBtn');
+    elements.continueToBooking = document.getElementById('continueToBooking');
+    elements.currentQuestionSpan = document.getElementById('currentQuestion');
+    elements.progressFill = document.getElementById('progressFill');
+    elements.countrySelect = document.getElementById('country');
+    elements.topMatches = document.getElementById('topMatches');
+    elements.neighborhoodGrid = document.getElementById('neighborhoodGrid');
+    elements.bookingDetails = document.getElementById('bookingDetails');
+    elements.paymentTotal = document.getElementById('paymentTotal');
+    elements.paymentForm = document.getElementById('paymentForm');
+    elements.successModal = document.getElementById('successModal');
+    elements.profileModal = document.getElementById('profileModal');
+    elements.viewConnections = document.getElementById('viewConnections');
+    elements.closeProfileModal = document.getElementById('closeProfileModal');
+    elements.backToHome = document.getElementById('backToHome');
+    elements.coffeeNowFilter = document.getElementById('coffeeNowFilter');
+    
     initializeApp();
     setupEventListeners();
     populateCountrySelect();
@@ -335,10 +331,15 @@ function setupEventListeners() {
     });
     
     // Coffee Roulette feature
-    elements.coffeeRouletteBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        triggerCoffeeRoulette();
-    });
+    if (elements.coffeeRouletteBtn) {
+        elements.coffeeRouletteBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('Coffee Roulette clicked!');
+            triggerCoffeeRoulette();
+        });
+    } else {
+        console.error('Coffee Roulette button not found!');
+    }
     
     elements.prevBtn.addEventListener('click', previousQuestion);
     elements.nextBtn.addEventListener('click', nextQuestion);
@@ -347,7 +348,10 @@ function setupEventListeners() {
     elements.continueToBooking.addEventListener('click', showNeighborhoods);
     elements.viewConnections.addEventListener('click', showSocialFeatures);
     elements.closeProfileModal.addEventListener('click', closeProfileModal);
-    elements.backToHome.addEventListener('click', () => showSection('landing'));
+    elements.backToHome.addEventListener('click', () => {
+        console.log('Back to home clicked');
+        showSection('landing');
+    });
 
     // Coffee Now filter
     if (elements.coffeeNowFilter) {
@@ -1125,5 +1129,6 @@ window.viewProfile = viewProfile;
 window.sendMessage = sendMessage;
 window.selectNeighborhood = selectNeighborhood;
 window.openChat = openChat;
+window.triggerCoffeeRoulette = triggerCoffeeRoulette;
 
 console.log('Whats\' BROwing app script loaded successfully!');
